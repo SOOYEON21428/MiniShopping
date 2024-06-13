@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객센터</title>
+    <script defer src="/JS/sendData.js"></script>
+    <script defer src="/JS/addCS.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#side-menu").load("/Common/SideMenu");
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="bg-black py-7">
+        <!--        topMenu-->
+        <div id="TopMenu"></div>
+<!--        &lt;!&ndash;        검색 창&ndash;&gt;-->
+<!--        <div id="search-container"></div>-->
+<!--        &lt;!&ndash;    sideMenu&ndash;&gt;-->
+<!--        <div id="side-menu"></div>-->
+    </header>
+
+    <div class="container mx-auto">
+        <div action="submit_inquiry.php" method="post" class="mt-8 max-w-sm mx-auto">
+            <div class="mb-4">
+                <label for="user_name" class="block text-gray-700 font-bold mb-2">이름:</label>
+                <input type="text" id="user_name" name="name" th:value="${user_name}" readonly
+                       class="w-full px-3 py-2 border rounded-lg placeholder-gray-400 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="payment_id" class="block text-gray-700 font-bold mb-2">주문번호:</label>
+                <input type="text" id="payment_id" name="payment_id" th:value="${payment_id}" readonly
+                       class="w-full px-3 py-2 border rounded-lg placeholder-gray-400 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="content" class="block text-gray-700 font-bold mb-2">환불 사유</label>
+                <textarea id="content" name="content" rows="4" required
+                          class="w-full px-3 py-2 border rounded-lg placeholder-gray-400 focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <button id="csBtn"
+                    class="w-full bg-pink-500 text-white font-bold py-3 px-6 rounded focus:outline-none focus:bg-lightpink-600">문의하기</button>
+        </div>
+    </div>
+    <div class="container">
+        <h1>고객센터</h1>
+        <h2>연락처 정보</h2>
+        <p>고객센터에 문의하실 사항이 있으시면 아래 연락처로 연락해 주세요.</p>
+        <ul>
+            <li>전화번호: 123-456-7890</li>
+            <li>이메일: support@example.com</li>
+            <li>주소: 서울시 강남구 역삼동 123번지</li>
+        </ul>
+
+        <h2>자주 묻는 질문(FAQ)</h2>
+        <ul>
+            <li>
+                <strong>Q: 배송은 어떻게 이루어지나요?</strong>
+                <p>A: 배송은 택배사를 통해 이루어지며, 일반적으로 주문 후 2~3일 이내에 도착합니다.</p>
+            </li>
+            <li>
+                <strong>Q: 반품 및 교환은 어떻게 하나요?</strong>
+                <p>A: 반품 및 교환은 주문일로부터 7일 이내에 가능하며, 상품의 불량 또는 오배송인 경우에 한해 무료로 처리해 드립니다.</p>
+            </li>
+            <li>
+                <strong>Q: 결제 수단은 어떤 것들이 있나요?</strong>
+                <p>A: 신용카드, 체크카드, 계좌이체, 페이팔 등 다양한 결제 수단을 이용하실 수 있습니다.</p>
+            </li>
+        </ul>
+    </div>
+<div id="Footer"></div>
+</body>
+</html>

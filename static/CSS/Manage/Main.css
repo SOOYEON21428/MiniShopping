@@ -1,0 +1,24 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.tab {
+    display: inline-block;
+    margin-right: 4px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #f3f4f6;
+    cursor: pointer;
+}
+.tab-active {
+    background-color: #60a5fa;
+    color: white;
+}
+.table-header {
+    background-color: #e5e7eb;
+}
+.table-row:nth-child(odd) {
+    background-color: #f9fafb;
+}
+.table-row:nth-child(even) {
+    background-color: #ffffff;
+}

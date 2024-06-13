@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#ManageTopMenu").load("/manage/Common/TopMenu")
+        });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open+Sans', sans-serif;
+        }
+        .star-rating {
+            color: #ffd700;
+        }
+    </style>
+    <link rel="stylesheet" href="/CSS/Manage/modiContainer.css">
+</head>
+<body class="bg-white text-gray-800">
+
+<header class="bg-blue-600 p-4 text-white">
+    <div id="ManageTopMenu"></div>
+</header>
+
+<div class="modify-overlay">
+    <div class="modify-container">
+        <h2>Modify Form</h2>
+        <button class="close-btn"><i class="fas fa-times" onclick="closeModal()">X</i></button>
+        <div id="modiForm">
+            <div id="modiName" th:text="${data.product_name}"></div>
+            <label for="category">카테고리</label>
+            <input type="text" id="category"  th:value="${data.product_category}" required/>
+            <label for="modiPrice">가격</label>
+            <input type="text" id="modiPrice" th:value="${data.product_price} + '원'" required/>
+            <button id="modiBtn" type="submit">수정하기</button>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="container mx-auto my-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Product Image Carousel -->
+        <div class="col-span-1">
+            <img src="https://kr.object.ncloudstorage.com/miniidle/storage/thanks.gif" alt="thanksKong">
+            <div class="flex space-x-2 mt-2" >
+                <select name="quantity" id="quantity" class="block w-full bg-gray-100 border border-gray-300 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-purple-500">
+                    <option id="sizeVal" th:each="detail : ${data.details}" th:value="${detail.size}" th:text="${detail.size}"></option>
+                </select>
+            </div>
+            <br>
+            <label>수량 더하기</label>
+            <div class="flex items-center">
+                <input type="text" name="pd_price" id="pd_count" class="pl-10 pr-4 py-2 rounded-full" style="background-color: #666666"
+                       placeholder="더할 수량을 입력하세요">
+            </div>
+            <br>
+            <button id="addProductBtn" class="bg-red-500 text-white px-6 py-2 rounded">추가하기</button>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-span-2">
+            <h1 class="text-2xl font-bold mb-2" th:text="${data.product_name}"></h1>
+            <div class="flex items-center mb-4">
+                    <span class="star-rating text-lg">
+                        ★★★★★
+                    </span>
+                <span class="ml-2 text-sm" th:text="'좋아요 : '+${data.count_love}"></span>
+            </div>
+            <p class="text-lg text-gray-600 mb-4" th:text="${data.product_category}"></p>
+            <div class="mb-4">
+                <div class="text-3xl font-bold" th:text="${data.product_price}+'원'"></div>
+                <button id="openModifyBtn" class="bg-red-500 text-white px-6 py-1 rounded" onclick="openModal()">수정하기</button>
+            </div>
+
+            <div th:each="detail : ${data.details}">
+                <div class="mb-4">
+                    <span class="text-lg" th:text="'사이즈: ' + ${detail.size} + '  수량 : '+ ${detail.amount} + '  판매량 : ' + ${detail.sales}"></span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <!-- Size and color options -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products Carousel -->
+    <div class="my-8">
+        <h2 class="text-xl font-bold mb-4">Related Products</h2>
+        <div class="flex space-x-4 overflow-x-auto">
+            <div class="min-w-max">
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews and Ratings -->
+    <div class="my-8">
+        <div class="border-t border-b py-4 input-container" >
+            <input class="input-comment" type="text" id="review" placeholder="Review">
+            <input type="file" multiple="multiple" id="imgList">
+            <button class="pretty-button commentBtn">등록하기</button>
+        </div>
+        <h2 class="text-xl font-bold mb-4">Customer Reviews</h2>
+        <div class="border-t border-b py-4" id="field">
+        </div>
+    </div>
+
+    <!-- Promotion Banner -->
+    <div class="my-8 p-8 bg-yellow-200 text-center">
+        <span class="text-3xl font-bold">10% Discount Offer!</span>
+        <p>Sign up for our newsletter and get 10% off your next order.</p>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-200 p-4 text-center">
+    <p>Footer content goes here.</p>
+</footer>
+<script src="/JS/Manage/Add/addProductCount.js"></script>
+<script src="/JS/sendData.js"></script>
+<script src="/JS/Manage/modalOverlay.js"></script>
+</body>
+</html>

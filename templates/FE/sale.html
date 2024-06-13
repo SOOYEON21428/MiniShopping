@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#side-menu").load("/Common/SideMenu");
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/Banner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-video {
+            width: 100%; /* 원하는 너비 설정 */
+            height: 670px; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+    </style>
+</head>
+<body class="bg-red-400 text-gray-700">
+        <!-- Header -->
+    <header class="bg-black py-7">
+        <!--        topMenu-->
+        <div id="TopMenu"></div>
+        <!--        검색 창-->
+        <div id="search-container"></div>
+        <!--    sideMenu-->
+        <div id="side-menu"></div>
+    </header>
+    
+    <main class="my-2">
+        <div class="relative">
+            <video controls autoplay loop class="custom-video">
+                <source src="https://kr.object.ncloudstorage.com/miniidle/storage/sale.mp4" type="video/mp4">
+                </video>
+          </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="flex flex-wrap -m-1">
+                <script src="/JS/product.js"></script>
+            </div>
+        </div>
+    </main>
+    <div id="Footer"></div>
+    <script>
+          function goToProductInfo(product_id) {
+        window.location.href = `product_info?id=${product_id}`;
+    }
+    </script>
+    <script src="/JS/WongeunJS/priceDown.js"></script>
+</body>
+</html>

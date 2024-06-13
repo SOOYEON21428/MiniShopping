@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#side-menu").load("/Common/SideMenu");
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <script defer src="/JS/page.js"></script>
+    <script defer src="/JS/category/category.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/UseOnce/Banner.css">
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .custom-video {
+            width: 100%;
+            height: 670px;
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination-container a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #000;
+        }
+        .pagination-container a:hover {
+            background-color: #ddd;
+        }
+        .pagination-container a.active {
+            background-color: pink;
+            color: #fff;
+        }
+        .product-item {
+            margin-bottom: 20px;
+            margin-right: 20px;
+            display: inline-block;
+            position: relative;
+            transition: transform 0.3s ease; /* Added transition for smooth scaling */
+            width: calc(25% - 20px); /* Set width to 25% minus margin */
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .product-item:hover {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+<!-- Header -->
+<header class="bg-black py-7">
+    <!--        topMenu-->
+    <div id="TopMenu"></div>
+    <!--        검색 창-->
+    <div id="search-container"></div>
+    <!--    sideMenu-->
+    <div id="side-menu"></div>
+</header>
+
+<div id="searchResults"></div>
+<script src="/JS/search.js"></script>
+
+<main class="my-2">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="flex flex-wrap -m-1" id="field"></div>
+    </div>
+    <div class="pagination-container">
+
+    </div>
+
+</main>
+
+<div id="Footer"></div>
+
+</body>
+</html>

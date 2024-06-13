@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>장바구니</title>
+        <script defer src="/JS/DetailView/ViewCartList.js"></script>
+        <script defer src="/JS/DetailView/GoPayment.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#side-menu").load("/Common/SideMenu");
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/Banner.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/cart.css">
+</head>
+    <body class="bg-white text-gray-700">
+        <!-- Header -->
+        <header class="bg-black py-7">
+            <!--        topMenu-->
+            <div id="TopMenu"></div>
+            <!--        검색 창-->
+            <div id="search-container"></div>
+        </header>
+
+        <div class="container" id="field">
+        </div>
+<div id="Footer"></div>
+
+</body>
+</html>

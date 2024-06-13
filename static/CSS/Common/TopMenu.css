@@ -1,0 +1,6 @@
+.bg-black {
+    position: -webkit-sticky; /* Safari 브라우저 지원 */
+    position: sticky;
+    top: 0; /* 화면 상단에 고정 */
+    z-index: 1000; /* 다른 요소들 위에 표시되도록 z-index 설정 */
+}

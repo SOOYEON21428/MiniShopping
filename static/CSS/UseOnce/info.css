@@ -1,0 +1,30 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.product-image-placeholder {
+    background-color: #E5E7EB;
+    width: 100%;
+    padding-top: 125%; /* 4:3 Aspect Ratio */
+    position: relative;
+}
+.product-image-placeholder img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-chart-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.size-chart-table th,
+.size-chart-table td {
+    border: 1px solid #E5E7EB;
+    text-align: left;
+    padding: 8px;
+}
+.size-chart-table th {
+    background-color: #F3F4F6;
+}

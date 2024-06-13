@@ -1,0 +1,16 @@
+.slideshow-container {
+  width: 17cm;
+  margin: 0 auto; /* This centers the slideshow container */
+  overflow: hidden; /* Hide overflowing content */
+  position: relative; /* Positioning context for absolute positioning of slides */
+}
+
+.mySlides {
+  display: none; /* Hide all slides by default */
+  width: 100%;
+}
+
+.mySlides img {
+  width: 17cm; /* Set the width of the image */
+  height: auto; /* Maintain aspect ratio */
+}

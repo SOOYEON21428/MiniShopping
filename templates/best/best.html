@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아요 순</title>
+    <script defer src="/JS/best/sellCount.js"></script>
+    <script defer src="/JS/page.js"></script>
+    <script defer src="/JS/product.js"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#side-menu").load("/Common/SideMenu");
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/Banner.css">
+    <link rel="stylesheet" href="/CSS/ListCardView/video.css">
+    <link rel="stylesheet" href="/CSS/ListCardView/item.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+    <body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="bg-black py-7">
+<!--        topMenu-->
+        <div id="TopMenu"></div>
+<!--        검색 창-->
+        <div id="search-container"></div>
+<!--    sideMenu-->
+        <div id="side-menu"></div>
+    </header>
+
+
+
+    <main class="my-2">
+        <div class="relative text-center">
+            <div class="flex justify-center">
+                <video controls autoplay loop
+                       class="custom-video"
+                       style="width: 80%; height: auto">
+                    <source src="/FE/video/Outfits Inspired By.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <br><br>
+        <br><br>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="flex flex-wrap -m-1" id="field"></div>
+        </div>
+        <div class="pagination-container">
+        </div>
+    </main>
+    <div id="Footer"></div>
+</body>
+</html>

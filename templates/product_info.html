@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <script defer src="/JS/sendData.js"></script>
+    <script defer src="/JS/getParams.js"></script>
+    <script defer src="/JS/DetailView/AddCart.js"></script>
+    <script defer src="/JS/DetailView/ClickLove.js"></script>
+    <script defer src="/JS/DetailView/imgPreView.js"></script>
+    <script defer src="/JS/DetailView/addComment.js"></script>
+    <script defer src="/JS/DetailView/printComment.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+            $('#SizeTable').load("/Common/SizeTable");
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/UseOnce/product.css">
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/Detail/PopLoveEffect.css">
+</head>
+
+    <header class="bg-black py-7">
+        <!--     topMenu-->
+        <div id="TopMenu"></div>
+        <!--     검색 창-->
+        <div id="search-container"></div>
+    </header>
+
+
+    <main class="py-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="product-image-placeholder">
+                    <img th:src="'https://kr.object.ncloudstorage.com/miniidle/storage/'+${data.product_img}" alt="Product Image" width="100%", height="100%">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold" th:text="'제품명 : '+${data.product_name}"></h1>
+                    <p class="text-sm text-gray-500" th:text="'브랜드명 : '+${data.brand_name}"></p>
+                    <p class="text-sm text-gray-500" th:text="'좋아요 수 : '+${data.count_love}"></p>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold" th:text="'가격 : '+${data.price}+'원'"></span>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="font-semibold" th:text="'카테고리 : '+${data.category}">Color</h2>
+                        <div class="flex space-x-2 mt-2">
+                            <!-- Color options here -->
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="font-semibold">사이즈</h2>
+                        <div class="flex space-x-2 mt-2">
+                            <select  name="size" id="size" class="block w-full bg-gray-100 border border-gray-300 rounded py-2 px-4 focus:outline-none focus:bg-white focus:border-purple-500">
+                                <option th:each="detail : ${data.details}" th:value="${detail.size}" th:text="'사이즈 : '+ ${detail.size}+'      남은 수량 : '+${detail.amount}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="font-semibold">갯수</h2>
+                        <div class="flex space-x-2 mt-2">
+                            <button id="decrement" class="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+                                <span class="text-gray-700 text-lg">-</span>
+                            </button>
+                            <input type="number" id="quantity" name="quantity" value="1"
+                                   class="w-50 bg-gray-100 border border-gray-300 rounded py-2 px-2 text-center focus:outline-none">
+                            <button id="increment" class="bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+                                <span class="text-gray-700 text-lg">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="flex space-x-4 mt-6">
+                        <button  class="bg-purple-600 text-white px-6 py-2 rounded">Buy Now</button>
+                        <button id="cartBtn" class="bg-gray-300 px-6 py-2 rounded">Add to Cart</button>
+<!--                        <button id="loveButton" class="bg-pink-600 text-white px-6 py-2 rounded" onclick="changeColor()">LOVE</button>-->
+                        <button id="loveBtn" class="bg-pink-600 text-white px-6 py-2 rounded">LOVE</button>
+                    </div>
+                </div>
+            </div>
+<!--          이펙트 좋아요 효과-->
+            <img class="popEffect" src="https://kr.object.ncloudstorage.com/miniidle/storage/02_%EB%AA%A8%EC%BD%94%EC%BD%94%EC%BD%982_03_%EC%A2%8B%EC%95%84%EC%9A%94.gif">
+
+            <div class="mt-10">
+                <h2 class="text-xl font-bold">Details</h2>
+                <div class="mt-4">
+                    <!-- Product 부위별 사이즈 표 -->
+                    <div id="SizeTable"></div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--            리뷰 창-->
+        <div class="my-8">
+            <div class="border-t border-b py-4 input-container" >
+                <input class="input-comment" type="text" id="review" placeholder="Review">
+                <input type="file" multiple="multiple" id="imgList">
+                <button class="pretty-button commentBtn">등록하기</button>
+            </div>
+            <h2 class="text-xl font-bold mb-4">Customer Reviews</h2>
+            <div class="border-t border-b py-4" id="field">
+            </div>
+        </div>
+        <!--             리뷰챵   -->
+    </main>
+<div id="Footer"></div>
+
+
+</body>
+</html>

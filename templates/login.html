@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion E-commerce Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/Login/login.css">
+    <link rel="stylesheet" href="/CSS/Common/TopMenu.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/Login/login_item.css">
+    <link rel="stylesheet" href="/CSS/Common/search.css">
+</head>
+<body class="bg-white text-gray-700">
+<header class="bg-black py-7">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="../main" class="text-pink-500 hover:text-pink-600 font-bold" id="main-link">IDLE</a>
+        <nav class="flex justify-center space-x-4 w-full">
+            <div class="mypage-dropdown">
+                <a href="/best" class="text-pink-500 hover:text-pink-800" id="best-link">BEST</a>
+                <div class="mypage-dropdown-content">
+                    <a href="/like">Like</a>
+                    <a href="/comment">Comment</a>
+                    <a href="/sales">Many sales</a>
+                </div>
+            </div>
+            <a href="/new" class="text-pink-500 hover:text-pink-800" id="new-link">NEW</a>
+            <a href="/sale" class="text-pink-500 hover:text-pink-800" id="sale-link">SALE</a>
+            <a href="/event" class="text-pink-500 hover:text-pink-800" id="event-link">EVENT</a>
+            <a href="/join" class="text-blue-500 hover:text-blue-800" id="memebr-link">JOIN</a>
+            <div class="mypage-dropdown">
+                <a href="#" class="text-blue-500 hover:text-blue-800">MYPAGE</a>
+                <div class="mypage-dropdown-content">
+                    <a href="/login">Login</a>
+                    <a href="/cart">Cart</a>
+                    <a href="/order">Order</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+</nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="검색...">
+                <button onclick="searchItem()">IDLE</button>
+            </div>
+
+            <div id="searchResults"></div>
+            <script src="/JS/search.js"></script>
+        </div>
+      </header>
+
+    <div class="container">
+        <h2>로그인</h2>
+        <form action="/api/login" method="post">
+            <div class="form-group">
+                <label for="username">ID</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button id="submit" type="submit">Login</button>
+        </form>
+        <div class="social-icons">
+            <a href="https://www.kakao.com" target="_blank">
+                <img src="https://kr.object.ncloudstorage.com/miniidle/storage/kakao.png" alt="카카오톡 로고">
+            </a>
+            <a href="/oauth2/authorization/google">
+                <img src="https://kr.object.ncloudstorage.com/miniidle/storage/google.png" alt="구글 로고">
+            </a>
+            <a href="https://www.naver.com" target="_blank">
+                <img src="https://kr.object.ncloudstorage.com/miniidle/storage/naver.png" alt="네이버 로고">
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-black py-4 mt-8">
+        <div class="container mx-auto text-center text-pink-500">
+            <div class="flex flex-col items-center">
+                <div class="sm:w-2/3 text-center py-6">
+                    <p class="text-sm text-pink-500 font-bold">
+                        © 2024 IDLE Fashion Store
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="/JS/join.js"></script>
+
+
+</body>
+</html>

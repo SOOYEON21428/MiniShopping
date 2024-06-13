@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Fashion E-commerce Prototype</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="/CSS/Common/search.css">
+      <link rel="stylesheet" href="/CSS/Common/TopMenu.css">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+      <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+      <script>
+          $(function() {
+              // $(요소 선택).load(url, data, 콜백함수);
+              $("#side-menu").load("/Common/SideMenu");
+              $("#search-container").load("/Common/Search");
+              $("#TopMenu").load("/Common/TopMenu");
+              $('#Footer').load("/Common/Footer");
+          });
+      </script>
+      <link rel="stylesheet" href="/CSS/Main/main.css">
+      <link rel="stylesheet" href="/CSS/Main/popup.css">
+  </head>
+  <body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="bg-black py-7">
+        <!--        topMenu-->
+        <div id="TopMenu"></div>
+        <!--        검색 창-->
+        <div id="search-container"></div>
+        <!--    sideMenu-->
+        <div id="side-menu"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-0 bg-white-500">
+      <!-- Carousel -->
+        <!-- Carousel -->
+        <div class="relative">
+            <div class="sale-banner rounded-lg shadow-lg p-20 text-white font-bold text-4xl">
+                <div class="text-sm mt-2">04.15 (MON) - 04.22 (MON)</div>
+                <button class="mt-4 px-6 py-2 bg-black text-pink-500 rounded-full"
+                        onmouseover="this.style.backgroundColor='pink'; this.style.color='black';"
+                        onmouseout="this.style.backgroundColor='black'; this.style.color='pink';"
+                        onclick="window.location.href='/sale';">
+                    ON SALE
+                </button>
+                <!-- 이미지를 표시할 공간 -->
+                <img id="banner-image" class="mt-4 w-300 h-500" src="" alt="banner image">
+            </div>
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                <span class="navigation-dot active"></span>
+                <span class="navigation-dot"></span>
+                <span class="navigation-dot"></span>
+            </div>
+        </div>
+    </main>
+
+
+
+
+        <!-- 팝업 내용 -->
+      <div id="popup-container" class="popup-container">
+        <div class="popup-content">           
+            <img src="https://kr.object.ncloudstorage.com/miniidle/storage/popup.jpg" alt="Welcome Image">
+            <p>We have some amazing deals for you. Click 'Close' to explore our store.</p>
+            <button id="close-popup">Close</button>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="flex mt-8 space-x-4">
+        <label><a href="/FE/best" class="text-pink-600 hover:text-pink-800" id="best-link">BEST LOOK</a>
+        </label>
+      </div>
+
+      <!-- Featured Products -->
+        <main class="my-2">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex flex-wrap -m-4" id="field">
+                    <script>
+                        const products = Array.from({ length: 40 }, (_, i) => ({
+                            id: i,
+                            name: `Product ${i + 1}`,
+                            image: `https://source.unsplash.com/random/300x300/?model&sig=${Math.floor(Math.random() * 1000)}`,
+                            price: (Math.random() * 100).toFixed(2)
+                        }));
+
+                        document.write(products.map(product => `
+                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                        <div class="border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center hover:scale-125 transition-transform duration-300" src="${product.image}" alt="product">
+                        </div>
+                    </div>
+                `).join(''));
+                    </script>
+                </div>
+            </div>
+        </main>
+        <div id="Footer"></div>
+        <script src="/JS/banner.js"></script>
+        <script>
+          document.getElementById('best-link').addEventListener('dblclick', function(event) {
+            event.preventDefault();
+            window.open(event.target.href, '_self');
+          });
+        </script>
+        <script src="/JS/popup.js"></script>
+        <script src="/JS/product.js"></script>
+</body>
+</html>

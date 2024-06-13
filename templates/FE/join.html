@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <script defer src="/JS/join.js"></script>
+    <script defer src="/JS/sendData.js"></script>
+    <script defer src="/JS/joinMailAuth.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#search-container").load("/Common/Search");
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <style>
+        /* Additional custom styles */
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="bg-black py-7">
+        <!--        topMenu-->
+        <div id="TopMenu"></div>
+    </header>
+    <br><br>
+    <br><br>
+   
+    <!-- Main content -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-2xl font-bold mb-4">회원가입</h2>
+        <form action="login" method="post">
+            <div class="mb-4">
+                <label for="email_id" class="block text-sm font-medium">이메일</label>
+                <div class="flex items-center">
+                    <input type="text" name="email_id" id="email_id" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" placeholder="아이디">
+                    <span class="mx-1">@</span>
+                    <input type="text" name="email_dns" id="email_dns" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" placeholder="도메인">
+                    <select name="email_sel" id="email_sel" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50">
+                        <option value="">직접 입력</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="gmail.com">gmail.com</option>
+                    </select>
+                    <div class="mb-4">
+                        <button id="checkDuplicate" class="ml-3 bg-gray-300 text-gray-700 py-1 px-3 rounded-md hover:bg-gray-400 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">중복체크</button>
+                        <button id="sendEmailBtn" class="ml-3 bg-gray-300 text-gray-700 py-1 px-3 rounded-md hover:bg-gray-400 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">인증메일전송</button>
+                    </div>
+                </div>
+                <span class="error" id="username-error"></span>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium">인증코드</label>
+                <input type="text" id="auth" name="auth" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
+                <button id="checkAuth" class="ml-3 bg-gray-300 text-gray-700 py-1 px-3 rounded-md hover:bg-gray-400 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">인증체크</button>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium">비밀번호</label>
+                <input type="password" id="password" name="password" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
+                <span class="error" id="password-error"></span>
+            </div>
+            
+            <div class="mb-4">
+                <label for="confirm_password" class="block text-sm font-medium">비밀번호 확인</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" required>
+                <span class="error" id="confirm-password-error"></span>
+            </div>
+            
+            <div class="mb-4">
+                <label for="nickname" class="block text-sm font-medium">닉네임</label>
+                <div class="flex items-center">
+                    <input type="text" name="nickname" id="nickname" class="block w-48 rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50" placeholder="닉네임을 입력하세요">
+                    <div id="checkNameBtn" class="ml-3 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 hover:text-white transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">중복체크</div>
+                </div>
+                <span class="error" id="nickname-error"></span>
+            </div>
+            
+
+            <div class="mb-4">
+                <label for="gender" class="block text-sm font-medium">성별</label>
+                <select id="gender" name="gender" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50">
+                    <option value="male">남성</option>
+                    <option value="female">여성</option>
+                </select>
+            </div>
+
+
+            <div class="mb-4">
+                <label for="mobile" class="block text-sm font-medium">전화번호</label>
+                <span class="block text-sm text-gray-500 mb-1">* '-' 없이 숫자만 입력</span>
+                <input type="text" name="mobile" id="mobile" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-pink-500 focus:ring focus:ring-pink-500 focus:ring-opacity-50">
+            </div>
+
+            <div class="mb-4">
+                <div id="btnJoin" class="block w-full bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition duration-300">가입하기</div>
+            </div>
+        </form>
+    </div>
+    <br><br><br>
+    <!-- Footer -->
+<div id="Footer"></div>
+
+</body>
+</html>
+
+
+

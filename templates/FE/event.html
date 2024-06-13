@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>쇼핑몰 광고</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="/JS/ScreenEffect/event.js"></script>
+<script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function() {
+        // $(요소 선택).load(url, data, 콜백함수);
+        $("#side-menu").load("/Common/SideMenu");
+        $("#search-container").load("/Common/Search");
+        $("#TopMenu").load("/Common/TopMenu");
+        $('#Footer').load("/Common/Footer");
+    });
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/CSS/UseOnce/event.css">
+<link rel="stylesheet" href="/CSS/Common/form.css">
+
+</head>
+
+<body class="bg-white text-gray-700">
+    <!-- Header -->
+    <header class="bg-black py-7">
+        <!--        topMenu-->
+        <div id="TopMenu"></div>
+        <!--        검색 창-->
+        <div id="search-container"></div>
+        <!--    sideMenu-->
+        <div id="side-menu"></div>
+    </header>
+
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="https://kr.object.ncloudstorage.com/miniidle/storage/event1.jpg" style="width:100%">
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="https://kr.object.ncloudstorage.com/miniidle/storage/event2.jpg" style="width:100%">
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="https://kr.object.ncloudstorage.com/miniidle/storage/event3.jpg" style="width:100%">
+  </div>
+</div>
+
+</body>
+</html>

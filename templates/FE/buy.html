@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>결제 페이지</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#TopMenu").load("/Common/TopMenu");
+            $('#Footer').load("/Common/Footer");
+        });
+    </script>
+    <link rel="stylesheet" href="/CSS/Common/form.css">
+    <link rel="stylesheet" href="/CSS/UseOnce/buy.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-white text-gray-700">
+        <!-- Header -->
+    <header class="bg-black py-7">
+        <div id="TopMenu"></div>
+    </header>
+
+<div class="container mx-auto">
+    <div class="row">
+        <div class="product-info">
+            <h2>결제 상품 정보</h2>
+            <div th:each="item : ${data}">
+                <hr>
+                <img th:src="'https://kr.object.ncloudstorage.com/miniidle/storage/'+${item.img}" width="200px" height="200px">
+                <p th:text="'상품 명 : '+${item.name}"></p>
+                <p th:text="'사이즈 : '+${item.size}"></p>
+                <p th:text="'갯수 : '+${item.count}"></p>
+                <p class="price" th:text="'가격 : '+${item.price}"></p>
+                <hr>
+            </div>
+        </div>
+        <div class="order-info">
+            <h2>주문 정보 입력</h2>
+            <div id="form">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" required>
+                <label for="address">주소</label>
+                <input type="text" id="address" name="address" required>
+                <button type="button" onclick="searchAddress()">주소 검색하기</button>
+                <label for="DetailAddress">상세 주소</label>
+                <input type="text" id="detailAddress" name="DetailAddress" required>
+                <label for="phone-num">연락처</label>
+                <input type="text" id="phone-num" name="phone-num" required>
+                <label for="payment-method">결제 방법</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="credit-card">신용카드</option>
+                    <option value="bank-transfer">계좌이체</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                <button id="payBtn" value="결제하기">결제하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Footer"></div>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="/JS/address.js"></script>
+<script src="/JS/Payment/payment.js"></script>
+<script src="/JS/sendData.js"></script>
+</body>
+</html>

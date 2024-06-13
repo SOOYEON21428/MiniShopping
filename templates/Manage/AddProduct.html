@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="http://code.jQuery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function() {
+            // $(요소 선택).load(url, data, 콜백함수);
+            $("#ManageTopMenu").load("/manage/Common/TopMenu")
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Open+Sans', sans-serif;
+        }
+        .star-rating {
+            color: #ffd700;
+        }
+    </style>
+    <link rel="stylesheet" href="/CSS/Manage/modiContainer.css">
+</head>
+<body class="bg-white text-gray-800">
+
+<header class="bg-blue-600 p-4 text-white">
+    <div id="ManageTopMenu"></div>
+</header>
+<div class="modify-overlay">
+    <div class="modify-container" style="width: 70%">
+        <h2>Modify Form</h2>
+        <button class="close-btn"><i class="fas fa-times" onclick="closeModal()">X</i></button>
+        <div id="modiForm">
+            <label for="brandName">브랜드 명</label>
+            <input type="text" id="brandName" required/>
+            <button id="brandSearch" class="bg-red-400 hover:bg-red-600 text-white font-bold py-1 px-2 rounded">검색하기</button>
+        </div>
+        <div id="resultContainer">
+            <table>
+                <thead>
+                <tr class="table-header">
+                    <th class=" px-4 py-2">브랜드 번호</th>
+                    <th class=" px-4 py-2">브랜드 명</th>
+                    <th class=" px-4 py-2"></th>
+                </tr>
+                </thead>
+                <tbody id="brandField">
+                <tr class="table-row" th:each="item:${data}">
+                    <td class="px-4 py-3" th:text="${item.brand_id}"></td>
+                    <td class="px-4 py-3"th:text="${item.brand_name}"></td>
+                    <td class="px-4 py-2">
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded"
+                                onclick="setBrand('${item.brand_name}','${item.brand_id}')">선택하기</button>
+                    </td>
+                </tr>
+                </tbody>
+                </thead>
+            </tr>
+            </table>
+            <span>
+                <button><</button><button>></button>
+            </span>
+        </div>
+    </div>
+</div>
+<!-- Main Content -->
+<main class="container mx-auto my-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Product Image Carousel -->
+
+
+        <!-- Product Details -->
+        <div class="col-span-2">
+            <div>
+                <input id="product_name" class="text-2xl font-bold mb-2" placeholder="제품 명을 입력해주세요"/>
+            </div>
+            <br>
+            <div>
+                <div id="brand" class="text-2xl font-bold mb-2">브랜드</div>
+                <div id="brandId" style="display: none"></div>
+                <button id="searchBrand" class="bg-gray-500 text-white px-8 py-1 rounded" onclick="openModal()">브랜드 검색하기</button>
+            </div>
+            <br>
+            <div>
+                <input id="pd_category" class="text-2xl font-bold mb-2" placeholder="카테고리를 입력해주세요"/>
+            </div>
+            <br>
+            <div>
+                <input id="pd_price" class="text-2xl font-bold mb-2" placeholder="가격을 입력해주세요"/>
+            </div>
+            <br>
+            <div id="sizeContainer">
+
+            </div>
+            <br>
+            <button id="addSize" class="bg-gray-500 text-white px-8 py-1 rounded">사이즈 더하기</button>
+            <br>
+            <br>
+            <div class="mb-4">
+                <button id="AddBtn" class="bg-red-500 text-white px-6 py-1 rounded">추가하기</button>
+            </div>
+
+
+            <div class="mb-4">
+                <!-- Size and color options -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products Carousel -->
+    <div class="my-8">
+        <h2 class="text-xl font-bold mb-4">Related Products</h2>
+        <div class="flex space-x-4 overflow-x-auto">
+            <div class="min-w-max">
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews and Ratings -->
+    <div class="my-8">
+        <div class="border-t border-b py-4 input-container" >
+            <input class="input-comment" type="text" id="review" placeholder="Review">
+            <input type="file" multiple="multiple" id="imgList" onchange="previewImages()">
+            <button class="pretty-button commentBtn">등록하기</button>
+        </div>
+        <div id="preview">
+        </div>
+    </div>
+
+    <!-- Promotion Banner -->
+    <div class="my-8 p-8 bg-yellow-200 text-center">
+        <span class="text-3xl font-bold">10% Discount Offer!</span>
+        <p>Sign up for our newsletter and get 10% off your next order.</p>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-200 p-4 text-center">
+    <p>Footer content goes here.</p>
+</footer>
+<script src="/JS/sendData.js"></script>
+<script src="/JS/Manage/Add/AddSizeContainer.js"></script>
+<script src="/JS/Manage/modalOverlay.js"></script>
+<script src="/JS/Manage/Add/getBrand.js"></script>
+<script src="/JS/Manage/Add/AddProduct.js"></script>
+<script src="/JS/DetailView/imgPreView.js"></script>
+</body>
+</html>
