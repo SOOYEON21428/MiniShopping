@@ -1,34 +1,4 @@
-## 📅 프로젝트 일정
-프로젝트 기획, 요구사항 추출 (20240215 ~ 20240328)
->
-기능 구현(20240328 ~ 20240419)
-
-
-
-### 🧑🏻 프로젝트 멤버
-
-<table>
- <tr>
-    <td align="center"><a href="https://github.com/Ryuwongeun"><img src="https://avatars.githubusercontent.com/u/156384148?v=4" width="130px;""></a></td>
-    <td align="center"><a href="https://github.com/SOOYEON21428"><img src="https://avatars.githubusercontent.com/u/154400842?v=4" width="130px;""></a></td>
-    <td align="center"><a href="https://github.com/dl11911"><img src="https://avatars.githubusercontent.com/u/156390295?v=4" width="130px;""></a></td>
-    <td align="center"><a href="https://github.com/Kim-soung-won"><img src="https://avatars.githubusercontent.com/u/105148570?s=400&u=907826e3bb99585a1a124720903cc468bde24bbb&v=4" width="130px;""></a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/Ryuwongeun"><b>원근</b></a></td>
-    <td align="center"><a href="https://github.com/gywls20"><b>수연</b></a></td>
-    <td align="center"><a href="https://github.com/dl11911"><b>승훈</b></a></td>
-    <td align="center"><a href="https://github.com/Kim-soung-won"><b>승원</b></a></td>
-  </tr>
-
-</table>
-
-## 기획 주제 선정 (20240215~202403)
-
-
-![03_우물우물](https://github.com/Kim-soung-won/Team_Idle/assets/105148570/80df373f-6b59-4be6-b95e-24b2f5f0e786)
-
-
+**페이지 관리 오류로 현재 프론트 코드만 확인 가능함
  
 **프로젝트 주제**: 유저 개인의 성향을 파악해 추천을 해주는 의류 쇼핑몰, 쇼핑몰 관리자 웹 페이지
 
@@ -47,21 +17,6 @@
 ### UI
 - Figma
 - <a href="https://github.com/tldraw/make-real">make-real(open source 생성형 AI)</a>
-
-### 백엔드
-- Spring Boot3 (실시간 API 처리)
-- Django (배치 작업 처리) <a href="https://github.com/Kim-soung-won/DjangoWeb">Git Repository</a>
-- Maven
-- Mybatis
-
-### DBMS
-- MySQL8
-
-### 데브옵스
-- NCP
-- Docker
-- Jenkins
-
 ### 커뮤니케이션
 - Notion
 - Figma
